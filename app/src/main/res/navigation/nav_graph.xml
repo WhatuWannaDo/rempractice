@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/reminderRow">
+    <fragment
+        android:id="@+id/reminderRow"
+        android:name="com.example.rempractice.project.View.reminderRow"
+        android:label="reminderrow"
+        tools:layout="@layout/reminderrow"
+        app:startDestination="@id/action_reminderRow_to_addReminder2">
+        <action
+            android:id="@+id/action_reminderRow_to_addReminder2"
+            app:destination="@id/addReminder" />
+    </fragment>
+    <fragment
+        android:id="@+id/addReminder"
+        android:name="com.example.rempractice.project.View.addReminder"
+        android:label="addrem"
+        tools:layout="@layout/addrem" />
+</navigation>
