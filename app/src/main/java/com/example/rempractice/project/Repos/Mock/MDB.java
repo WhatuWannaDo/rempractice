@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MDB implements RepTasks {
-    MutableLiveData<List<reminders>> data;
+    MutableLiveData<List<reminders>> data = new MutableLiveData<>();
     List<reminders> list;
 
     public MutableLiveData<List<reminders>> getAllReminders(){
@@ -23,11 +23,15 @@ public class MDB implements RepTasks {
         rem1.setTextRem("Пожрать");
         rem1.setDateRem("16.09.2021");
         rem1.setDone(false);
+        list.add(rem1);
 
         reminders rem2 = new reminders();
         rem2.setTextRem("Поспать");
         rem2.setDateRem("15.09.2021");
         rem2.setDone(true);
+        list.add(rem2);
+
+        data.setValue(list);
     }
 
     public <T extends reminders> void addReminder(T rem){
