@@ -1,5 +1,6 @@
 package com.example.rempractice.project.View;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +62,7 @@ public class reminderRow extends Fragment {
         super.onActivityCreated(savedInstanceState);
         ARVM = new ViewModelProvider(this).get(reminderVM.class);
         ARVM.getRems().observe(getViewLifecycleOwner(), (List<reminders> remList) -> {
-            ARB.recyclerView2.setAdapter(new reminderAdapter(remList));
+            ARB.recyclerView2.setAdapter(new reminderAdapter(remList, reminderRow.this));
         });
     }
 

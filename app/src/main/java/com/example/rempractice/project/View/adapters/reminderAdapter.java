@@ -1,22 +1,46 @@
 package com.example.rempractice.project.View.adapters;
 
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 import com.example.rempractice.Domain.reminders;
+import com.example.rempractice.R;
 import com.example.rempractice.databinding.RemrecyclerBinding;
+import com.example.rempractice.project.View.GlideApp;
 
+
+import java.util.Arrays;
 import java.util.List;
 
 public class reminderAdapter extends RecyclerView.Adapter<reminderAdapter.reminderViewHolder> {
     private List<reminders> rems;
+    private final Fragment hostFragment;
 
-    public reminderAdapter(List<reminders> rems){
+
+    public reminderAdapter(List<reminders> rems, Fragment fragment){
         this.rems = rems;
+        this.hostFragment = fragment;
     }
 
     @NonNull
@@ -29,6 +53,16 @@ public class reminderAdapter extends RecyclerView.Adapter<reminderAdapter.remind
 
     @Override
     public void onBindViewHolder(@NonNull reminderViewHolder holder, int position) {
+
+
+        List<String> photos = rems.get(position).getImages();
+        Uri uri = Uri.parse(photos.get(0));
+
+        GlideApp.with(hostFragment)
+                .load(uri)
+                .into(holder.binding.imageView);
+
+
         holder.binding.textrow.setText(rems.get(position).getTextRem());
         holder.binding.daterow.setText(rems.get(position).getDateRem());
         holder.binding.isdone.setChecked(rems.get(position).isDone());

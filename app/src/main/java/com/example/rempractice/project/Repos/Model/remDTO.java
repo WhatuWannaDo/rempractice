@@ -1,17 +1,17 @@
 package com.example.rempractice.project.Repos.Model;
 
-import android.os.Build;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import com.google.gson.Gson;
 
 import com.example.rempractice.Domain.reminders;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.List;
+
 
 @Entity(tableName = "reminders")
 public class remDTO extends reminders {
@@ -25,6 +25,9 @@ public class remDTO extends reminders {
     public String date;
     @ColumnInfo
     public boolean isDone;
+    @ColumnInfo
+    public String images;
+
 
 
     @Override
@@ -55,5 +58,18 @@ public class remDTO extends reminders {
     @Override
     public void setDone(boolean done) {
         super.setDone(done);
+    }
+
+    @Override
+    public List<String> getImages() {
+        if (super.getImages() == null || super.getImages().isEmpty()) {
+            super.setImages(new Gson().fromJson(this.images, List.class));
+        }
+        return super.getImages();
+    }
+    @Override
+    public void setImages(List<String> images) {
+        super.setImages(images);
+        this.images = new Gson().toJson(images);
     }
 }

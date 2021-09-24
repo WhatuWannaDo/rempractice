@@ -1,15 +1,19 @@
 package com.example.rempractice.Domain;
 
+import java.util.List;
+
 public class reminders {
     private String textRem, dateRem;
     private boolean isDone;
+    private List<String> images;
 
     public reminders(){}
 
-    public reminders(String textRem, String dateRem, boolean isDone) {
+    public reminders(String textRem, String dateRem, boolean isDone, List<String> img) {
         this.textRem = textRem;
         this.dateRem = dateRem;
         this.isDone = isDone;
+        this.images = img;
     }
 
     public String getTextRem() {
@@ -34,5 +38,13 @@ public class reminders {
 
     public void setDone(boolean done) {
         isDone = done;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 }
