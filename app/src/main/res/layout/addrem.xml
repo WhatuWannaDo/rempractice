@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="68dp"
         android:ems="16"
         android:gravity="start|top"
         android:hint="Reminder Text"
@@ -43,8 +43,8 @@
         android:id="@+id/err"
         android:layout_width="227dp"
         android:layout_height="46dp"
-        android:layout_marginStart="103dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="16dp"
         android:textColor="#731414"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -75,4 +75,14 @@
         android:src="@android:drawable/ic_menu_gallery"
         app:layout_constraintBottom_toTopOf="@+id/calendar"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/adress"
+        android:layout_width="238dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="63dp"
+        android:hint="Adress"
+        app:layout_constraintStart_toEndOf="@+id/addImageRem"
+        app:layout_constraintTop_toBottomOf="@+id/remText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

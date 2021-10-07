@@ -27,12 +27,14 @@ public class remDTO extends reminders {
     public boolean isDone;
     @ColumnInfo
     public String images;
+    @ColumnInfo
+    public String adress;
 
 
 
     @Override
     public String getTextRem() {
-        return super.getTextRem().toString();
+        return super.getTextRem();
     }
 
     @Override
@@ -71,5 +73,15 @@ public class remDTO extends reminders {
     public void setImages(List<String> images) {
         super.setImages(images);
         this.images = new Gson().toJson(images);
+    }
+
+    @Override
+    public String getAdress() {
+        return adress;
+    }
+
+    @Override
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 }

@@ -10,10 +10,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.FileUtils;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 
 import androidx.annotation.NonNull;
@@ -21,24 +24,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.room.util.FileUtil;
 
-import com.example.rempractice.MainActivity;
 import com.example.rempractice.databinding.AddremBinding;
 import com.example.rempractice.project.ViewModel.addReminderVM;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.UUID;
 
 public class addReminder extends Fragment {
 
@@ -74,6 +67,30 @@ public class addReminder extends Fragment {
             }
         });
 
+        ARB.adress.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ARVM.getAddressList(s.toString()).observe(getViewLifecycleOwner(), (List<String> values) -> {
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                            getContext(),
+                            android.R.layout.simple_dropdown_item_1line,
+                            values
+                    );
+                    adapter.getFilter().filter(null);
+                    ARB.adress.setAdapter(adapter);
+
+                });
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
         ARB.contRem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +99,9 @@ public class addReminder extends Fragment {
                 }
                 else if(ARB.dateFromCalendar.getText().toString().equals("")){
                     ARB.err.setText("Дата не выбрана!");
+                }
+                else if(ARB.adress.getText().toString().equals("")){
+                    ARB.err.setText("Место не добавлено!");
                 }
                 else {
                     Bitmap bitmap = ((BitmapDrawable)ARB.addImageRem.getDrawable()).getBitmap();
@@ -92,7 +112,8 @@ public class addReminder extends Fragment {
                     ARVM.addReminder(ARB.remText.getText().toString(),
                             ARB.dateFromCalendar.getText().toString(),
                             false,
-                            list);
+                            list,
+                            ARB.adress.getText().toString());
 
                     Navigation.findNavController(v).popBackStack();
                 }
