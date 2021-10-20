@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    //Client-ID 335129162091-b1lpvcfappdenp1s2k5i0joqot828hn3.apps.googleusercontent.com
 }
 
 android {
