@@ -38,4 +38,13 @@ public class remRepos implements RepTasks {
             dao.deleteReminder(((remDTO) rems));
         });
     }
+/*
+    @Override
+    public < extends reminders> void updateReminder(boolean rems) {
+        remRoomDB.databaseWriteExecutor.execute(() -> {
+            dao.updateRem(((remDTO) rems));
+        });
+    }
+
+ */
 }

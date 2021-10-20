@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/reminderRow">
+    app:startDestination="@id/authorization">
     <fragment
         android:id="@+id/reminderRow"
         android:name="com.example.rempractice.project.View.reminderRow"
@@ -19,4 +19,14 @@
         android:name="com.example.rempractice.project.View.addReminder"
         android:label="addrem"
         tools:layout="@layout/addrem" />
+    <fragment
+        android:id="@+id/authorization"
+        android:name="com.example.rempractice.project.View.Authorization"
+        android:label="Authorization"
+        tools:layout="@layout/auth"
+        app:startDestination="@id/action_authorization_to_reminderRow">
+        <action
+            android:id="@+id/action_authorization_to_reminderRow"
+            app:destination="@id/reminderRow" />
+    </fragment>
 </navigation>

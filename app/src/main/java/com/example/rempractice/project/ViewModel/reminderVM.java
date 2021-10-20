@@ -17,4 +17,6 @@ public class reminderVM extends ViewModel {
     public void deleteReminder(reminders rem){
         Repos.getRepos().deleteReminder(rem);
     }
+
+    //public void updateReminder(boolean rem){Repos.getRepos().updateReminder(rem);}
 }

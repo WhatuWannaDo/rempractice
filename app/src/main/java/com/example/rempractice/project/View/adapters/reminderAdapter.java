@@ -14,8 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rempractice.Domain.reminders;
+import com.example.rempractice.databinding.AddremBinding;
+import com.example.rempractice.databinding.ReminderrowBinding;
 import com.example.rempractice.databinding.RemrecyclerBinding;
 import com.example.rempractice.project.View.GlideApp;
+import com.example.rempractice.project.ViewModel.reminderVM;
 
 import java.util.List;
 

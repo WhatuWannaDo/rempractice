@@ -24,4 +24,11 @@ public class addReminderVM extends ViewModel {
     public LiveData<List<String>> getAddressList(String address_prototype) {
         return adressChoose.getInstance().getAnalysis().getAddressesFromPattern(address_prototype);
     }
+/*
+    public void updateReminder(boolean isDone){
+        remDTO dto = new remDTO();
+        dto.setDone(isDone);
+    }
+
+ */
 }

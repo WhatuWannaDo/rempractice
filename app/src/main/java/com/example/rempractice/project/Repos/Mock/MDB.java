@@ -45,4 +45,11 @@ public class MDB implements RepTasks {
         list.remove(rem);
         data.setValue(list);
     }
+/*
+    @Override
+    public <T extends reminders> void updateReminder(boolean rem) {
+        data.setValue(list);
+    }
+
+ */
 }

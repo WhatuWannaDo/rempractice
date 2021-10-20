@@ -10,4 +10,5 @@ public interface RepTasks {
     <T extends reminders> LiveData<List<T>> getAllReminders();
     <T extends reminders> void addReminder(T rem);
     <T extends reminders> void deleteReminder(T rem);
+    //<T extends reminders> void updateReminder(boolean rem);
 }
